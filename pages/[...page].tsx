@@ -39,9 +39,7 @@ export default function TemplatePage({ page }: { page: Page }) {
   useEffect(() => {
     page.children.forEach(async (child, i) => {
       const path = `http://127.0.0.1:4567/${child.component}.js`;
-      const Component = await import(/* webpackIgnore: true */ path).then(
-        (m) => m.default
-      );
+      const Component = await import(path).then((m) => m.default);
 
       console.log(Component);
 
